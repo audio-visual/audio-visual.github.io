@@ -75,7 +75,7 @@
       .section-intro { max-width: 720px; margin: 13px 0 0; color: var(--muted); }
       .rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
 
-      .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; }
+      .about-grid { display: block; }
       .about-copy { font-size: 1.04rem; color: #38485d; }
       .about-copy p:first-child { margin-top: 0; }
       .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--line); }
@@ -83,10 +83,11 @@
       .fact strong { display: block; color: var(--blue); font: 700 1.85rem/1 var(--serif); }
       .fact span { display: block; margin-top: 8px; color: var(--muted); font-size: .83rem; }
 
-      .directions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+      .directions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 17px; }
       .direction { min-height: 265px; padding: 26px; border: 1px solid var(--line); border-radius: 13px; background: var(--card); }
       .direction:nth-child(2) { background: #f1f8ff; border-color: #cae3fa; }
       .direction:nth-child(3) { background: #f0faf6; border-color: #cceadd; }
+      .direction:nth-child(4) { background: #fffaf0; border-color: #f4e4ba; }
       .num { color: #93a4b8; font: 700 .82rem var(--serif); }
       .direction h3 { margin: 29px 0 10px; font: 700 1.28rem/1.2 var(--serif); }
       .direction p { margin: 0; color: var(--muted); font-size: .91rem; }
@@ -94,15 +95,14 @@
       .focus strong { display: block; margin-bottom: 7px; font-size: 1.05rem; }
       .focus p { margin: 0; color: #665a42; }
 
-      .paper-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 44px; }
-      .paper { padding: 21px 0; border-top: 1px solid var(--line); }
-      .paper:last-child, .paper:nth-last-child(2) { border-bottom: 1px solid var(--line); }
-      .venue { display: inline-block; padding: 3px 8px; color: #176278; background: #e3f5f7; border-radius: 4px; font-size: .7rem; font-weight: 800; letter-spacing: .05em; }
-      .paper h3 { margin: 10px 0 7px; font-size: 1rem; line-height: 1.38; }
-      .paper h3 a:hover { color: var(--blue); }
-      .paper p { margin: 0; color: var(--muted); font-size: .82rem; }
-      .paper em { color: #314967; font-style: normal; font-weight: 700; }
-      .all-papers { display: inline-flex; margin-top: 25px; padding-bottom: 3px; color: var(--blue); border-bottom: 1px solid currentColor; font-weight: 700; font-size: .91rem; }
+      .paper-grid { border-top: 1px solid var(--line); }
+      .paper { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 0 18px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+      .paper-index { color: var(--blue); font: 700 .82rem/1.65 var(--serif); }
+      .paper p { margin: 0; color: #52637a; font-size: .91rem; }
+      .paper-title { color: var(--ink); font-weight: 800; }
+      .paper em { color: #314967; font-style: normal; }
+      .paper .author { color: var(--ink); font-weight: 800; }
+      .paper .metric { color: var(--ink); font-weight: 800; }
 
       .achievements { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
       .achievement { padding: 24px 22px; border-radius: 12px; background: #13273f; color: white; }
@@ -124,6 +124,7 @@
       .join-card { padding: 26px; background: rgba(255,255,255,.07); border: 1px solid rgba(160, 205, 233, .25); border-radius: 13px; }
       .join-card strong { font-size: 1.1rem; }
       .join-card p { margin-top: 9px; font-size: .9rem; }
+      .join-card p a { color: #9de3f2; text-decoration: underline; text-underline-offset: 3px; }
       .join-card .button { margin-top: 17px; color: #102a40; background: #ecfbff; }
 
       footer { padding: 28px 0; color: #708096; font-size: .8rem; background: #0c1827; }
@@ -137,17 +138,16 @@
         .identity { max-width: 370px; }
         .section-head { grid-template-columns: 1fr; gap: 9px; }
         .section-kicker { padding-top: 0; }
-        .directions { grid-template-columns: 1fr; }
+        .directions { grid-template-columns: repeat(2, 1fr); }
         .direction { min-height: 0; }
-        .paper-grid { grid-template-columns: 1fr; }
-        .paper:nth-last-child(2) { border-bottom: 0; }
         .achievements { grid-template-columns: repeat(2, 1fr); }
       }
       @media (max-width: 460px) {
         .wrap { width: min(100% - 30px, 1120px); }
         section { padding: 64px 0; }
         h1 { font-size: 2.8rem; }
-        .facts, .achievements { grid-template-columns: 1fr; }
+        .facts, .achievements, .directions { grid-template-columns: 1fr; }
+        .paper { grid-template-columns: 43px minmax(0, 1fr); gap: 0 10px; }
         .footer-inner { align-items: flex-start; flex-direction: column; }
       }
     </style>
@@ -171,7 +171,7 @@
           <div>
             <div class="eyebrow">Human-centric Multimodal Intelligence</div>
             <h1>让多模态智能<br />更<em>可信</em>、更安全、<br />更懂人。</h1>
-            <p class="lead">Wuyang Chen 聚焦以人为中心的多模态学习、数字人生成与可信人工智能，探索语音、视觉、情感和隐私保护的交叉创新。</p>
+            <p class="lead">聚焦以人为中心的多模态学习、数字人生成与可信人工智能，探索语音、视觉、情感和隐私保护的交叉创新。</p>
             <div class="hero-actions">
               <a class="button primary" href="#join">面向学生的研究机会</a>
               <a class="button secondary" href="#publications">查看代表论文</a>
@@ -181,36 +181,10 @@
             <div class="monogram">WC</div>
             <h2>Wuyang Chen</h2>
             <p>Multimodal AI · Trustworthy AI</p>
-            <span class="tag">Research &amp; Student Mentoring</span>
+            <span class="tag">Lecturer</span>
           </aside>
         </div>
       </section>
-
-      <section id="about">
-        <div class="wrap">
-          <div class="section-head">
-            <div class="section-kicker">Profile</div>
-            <div>
-              <h2>从跨模态理解到可信生成</h2>
-              <p class="section-intro">以具有解释力、鲁棒性和安全边界的人工智能系统为目标，将表征学习、生成模型和隐私增强技术贯通起来。</p>
-            </div>
-          </div>
-          <div class="about-grid">
-            <div class="about-copy">
-              <p>研究工作覆盖语音—人脸关联与生成、多模态情感识别、复杂场景感知与深度伪造检测。相关成果发表于 <strong>IEEE TNNLS、TIFS、T-BIOM、ACM TOMM、ACM MM、ICME</strong> 等重要期刊与会议。</p>
-              <p>面向现实世界的可信需求，当前正开展与电网行业合作的数据泄露防护研究，并推进隐私保护与多模态水印等前沿方向。</p>
-            </div>
-            <div class="facts" aria-label="研究成果概览">
-              <div class="fact"><strong>10+</strong><span>代表性研究工作</span></div>
-              <div class="fact"><strong>Q1</strong><span>高水平期刊成果</span></div>
-              <div class="fact"><strong>CCF A</strong><span>多篇顶级会议 / 期刊论文</span></div>
-              <div class="fact"><strong>4</strong><span>国际竞赛获奖经历</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr class="rule" />
 
       <section id="research">
         <div class="wrap">
@@ -225,22 +199,27 @@
             <article class="direction">
               <div class="num">01 / HUMAN-CENTRIC AI</div>
               <h3>多模态表征学习与数字人</h3>
-              <p>研究语音、人脸、情感等人类信号之间的关联建模，探索跨模态检索、语音驱动人脸生成，以及可控、高保真的数字人技术。</p>
+              <p>研究语音、人脸、情感理解等人类信号之间的关联建模，探索跨模态检索、语音驱动人脸生成，以及可控、高保真的数字人技术。</p>
             </article>
             <article class="direction">
               <div class="num">02 / TRUSTWORTHY AI</div>
               <h3>深度伪造检测与内容可信</h3>
-              <p>围绕多模态伪造识别、持续学习、情感感知检测与生成内容溯源，构建在复杂分布变化下仍可靠的智能系统。</p>
+              <p>围绕多模态伪造识别、生成内容溯源与内容可信评估，构建面向真实应用场景的可靠智能系统。</p>
             </article>
             <article class="direction">
               <div class="num">03 / PRIVACY &amp; SECURITY</div>
               <h3>数据泄露防护、隐私与水印</h3>
-              <p>探索电网业务场景中的数据泄露风险识别与防护，并推进隐私保护、多模态内容水印及模型与数据安全等方向。</p>
+              <p>探索敏感数据流通中的泄露风险识别与防护，并推进隐私保护、多模态内容水印及模型与数据安全等方向。</p>
+            </article>
+            <article class="direction">
+              <div class="num">04 / CONTINUAL LEARNING</div>
+              <h3>持续学习与可靠智能</h3>
+              <p>研究分布变化下的知识保持、增量适应与遗忘抑制，重点探索深度伪造等安全任务的持续检测。</p>
             </article>
           </div>
           <div class="focus">
-            <strong>正在推进的课题</strong>
-            <p>与电网行业合作开展数据泄露保护研究；并持续探索隐私保护与水印技术在多模态模型、生成内容和数据流通场景中的应用。上述方向欢迎具有工程实现或安全研究兴趣的同学参与。</p>
+            <strong>其他涉猎</strong>
+            <p>医学多模态智能诊疗，以及静默语音（Silent Speech）、视觉到语音（Visual-to-Speech）等。</p>
           </div>
         </div>
       </section>
@@ -258,55 +237,65 @@
           </div>
           <div class="paper-grid">
             <article class="paper">
-              <span class="venue">ACM TOMM · 2024</span>
-              <h3>VoiceStyle: Voice-based Face Generation Via Cross-modal Prototype Contrastive Learning</h3>
-              <p><em>Wuyang Chen</em>, Zhu Boqing, Xu Kele, Dou Yong, Feng Dawei. SCI · JCR Q1 · CCF-B · IF 5.2</p>
+              <span class="paper-index">[01]</span>
+              <p><span class="author">Wuyang Chen</span>, Zhu Boqing, Xu Kele, Dou Yong, Feng Dawei. <span class="paper-title">VoiceStyle: Voice-based Face Generation Via Cross-modal Prototype Contrastive Learning.</span> <em>ACM Transactions on Multimedia Computing, Communications, and Applications</em>, vol. 20, no. 9, pp. 1–23, 2024. SCI · JCR Q1 · CCF B · <span class="metric">IF 5.2</span></p>
             </article>
             <article class="paper">
-              <span class="venue">ACM MM · 2024</span>
-              <h3>Contrastive Learning-based Chaining-Cluster for Multilingual Voice-Face Association</h3>
-              <p><em>Wuyang Chen</em>, Sun Yanjie, Xu Kele, Dou Yong. EI · CCF-A</p>
+              <span class="paper-index">[02]</span>
+              <p><span class="author">Wuyang Chen</span>, Sun Yanjie, Xu Kele, Dou Yong. <span class="paper-title">Contrastive Learning-based Chaining-Cluster for Multilingual Voice-Face Association.</span> <em>Proceedings of the 32nd ACM International Conference on Multimedia (ACM MM)</em>, pp. 11348–11354, 2024. EI · <span class="metric">CCF A</span></p>
             </article>
             <article class="paper">
-              <span class="venue">自动化学报 · 2022</span>
-              <h3>Complex Scene Segmentation Based on Visible and Thermal Images in Driving Environment</h3>
-              <p><em>Wuyang Chen</em>, Zhao Yuqian, Yang Chunhua, Zhangfan, Yu Lingli, Chen Baifan. SCI · CCF-A · IF 2.845</p>
+              <span class="paper-index">[03]</span>
+              <p><span class="author">Wuyang Chen</span>, Zhao Yuqian, Yang Chunhua, Zhangfan, Yu Lingli, Chen Baifan. <span class="paper-title">Complex Scene Segmentation Based on Visible and Thermal Images in Driving Environment.</span> <em>Acta Automatica Sinica (自动化学报)</em>, vol. 48, no. 2, pp. 460–469, 2022. SCI · <span class="metric">CCF A</span> · <span class="metric">IF 2.845</span></p>
             </article>
             <article class="paper">
-              <span class="venue">IEEE ICME · 2024</span>
-              <h3>Voice-to-Face Generation: Couple of Self-Supervised Representation Learning with Diffusion Model</h3>
-              <p><em>Wuyang Chen</em>, Sun Yanjie, Xu Kele, Dou Yong, Gao Tian. EI · CCF-B</p>
+              <span class="paper-index">[04]</span>
+              <p><span class="author">Wuyang Chen</span>, Sun Yanjie, Xu Kele, Dou Yong, Gao Tian. <span class="paper-title">Voice-to-Face Generation: Couple of Self-Supervised Representation Learning with Diffusion Model.</span> <em>Proceedings of the 2024 IEEE International Conference on Multimedia and Expo (ICME)</em>, pp. 1–6, 2024. EI · CCF B</p>
             </article>
             <article class="paper">
-              <span class="venue">ACM MM · 2025</span>
-              <h3>UniEmotion: A Unified Framework for Multimodal Emotion Recognition with Iterative Consensus-based Training</h3>
-              <p><em>Wuyang Chen</em>, Sun Yanjie, Dou Yong. EI · CCF-A</p>
+              <span class="paper-index">[05]</span>
+              <p><span class="author">Wuyang Chen</span>, Sun Yanjie, Dou Yong. <span class="paper-title">UniEmotion: A Unified Framework for Multimodal Emotion Recognition with Iterative Consensus-based Training.</span> <em>Proceedings of the ACM International Conference on Multimedia (ACM MM)</em>, 2025. EI · <span class="metric">CCF A</span></p>
             </article>
             <article class="paper">
-              <span class="venue">ACM MM Workshop · 2024</span>
-              <h3>THE-FD: Task Hierarchical Emotion-aware for Fake Detection</h3>
-              <p><em>Wuyang Chen</em>, Sun Yanjie, Dou Yong. EI</p>
+              <span class="paper-index">[06]</span>
+              <p><span class="author">Wuyang Chen</span>, Sun Yanjie, Dou Yong. <span class="paper-title">THE-FD: Task Hierarchical Emotion-aware for Fake Detection.</span> <em>Proceedings of the 2nd International Workshop on Multimodal and Responsible Affective Computing</em>, pp. 10–14, 2024. EI</p>
             </article>
             <article class="paper">
-              <span class="venue">IEEE T-BIOM · 2025</span>
-              <h3>Voice2Visage: Deciphering Faces from Voices</h3>
-              <p><em>Wuyang Chen</em>, et al. SCI · IF 5.0 · DOI: 10.1109/TBIOM.2025.3615961</p>
+              <span class="paper-index">[07]</span>
+              <p><span class="author">Wuyang Chen</span>, et al. <span class="paper-title">Voice2Visage: Deciphering Faces from Voices.</span> <em>IEEE Transactions on Biometrics, Behavior, and Identity Science</em>, vol. 8, no. 1, pp. 111–121, Jan. 2026. SCI · <span class="metric">IF 5.0</span></p>
             </article>
             <article class="paper">
-              <span class="venue">IEEE TNNLS · 2026</span>
-              <h3>A Survey on Human-centric Voice-Face Multimodal Learning</h3>
-              <p><em>Wuyang Chen</em>, et al. SCI · JCR Q1 · CCF-B · IF 9.7</p>
+              <span class="paper-index">[08]</span>
+              <p><span class="author">Wuyang Chen</span>, et al. <span class="paper-title">A Survey on Human-centric Voice-Face Multimodal Learning.</span> <em>IEEE Transactions on Neural Networks and Learning Systems</em>, 2026. SCI · JCR Q1 · CCF B · <span class="metric">IF 9.7</span></p>
             </article>
             <article class="paper">
-              <span class="venue">IEEE TIFS · 2026</span>
-              <h3>Adaptive Affinity Memorization with Layer Mutation for Multimodal Deepfake Continual Detection</h3>
-              <p>Xiao Man, Jianbin Ye, Bo Liu, Zijian Gao, <em>Wuyang Chen</em>, et al. SCI · JCR Q1 · CCF-A · IF 8.7</p>
+              <span class="paper-index">[09]</span>
+              <p>Xiao Man, Jianbin Ye, Bo Liu, Zijian Gao, <span class="author">Wuyang Chen</span>, Tao Li, Huaimin Wang, Kele Xu. <span class="paper-title">Adaptive Affinity Memorization with Layer Mutation for Multimodal Deepfake Continual Detection.</span> <em>IEEE Transactions on Information Forensics and Security</em>, 2026. SCI · JCR Q1 · <span class="metric">CCF A</span> · <span class="metric">IF 8.7</span></p>
             </article>
             <article class="paper">
-              <span class="venue">arXiv · 2026</span>
-              <h3>Silent Speech Interfaces in the Era of Large Language Models: A Comprehensive Taxonomy and Systematic Review</h3>
-              <p>Xu Kele, Yifan Wang, Ming Feng, Qisheng Xu, <em>Wuyang Chen</em>, et al. arXiv:2603.11877</p>
+              <span class="paper-index">[10]</span>
+              <p>Xu Kele, Yifan Wang, Ming Feng, Qisheng Xu, <span class="author">Wuyang Chen</span>, Yutao Dou, Cheng Yang, Huaimin Wang. <span class="paper-title">Silent Speech Interfaces in the Era of Large Language Models: A Comprehensive Taxonomy and Systematic Review.</span> <em>arXiv preprint</em> arXiv:2603.11877, 2026.</p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <hr class="rule" />
+
+      <section id="about">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="section-kicker">Profile</div>
+            <div>
+              <h2>从跨模态理解到可信生成</h2>
+              <p class="section-intro">以具有解释力、鲁棒性和安全边界的人工智能系统为目标，将表征学习、生成模型和隐私增强技术贯通起来。</p>
+            </div>
+          </div>
+          <div class="about-grid">
+            <div class="about-copy">
+              <p>研究工作覆盖语音—人脸关联与生成、多模态情感识别、复杂场景感知与深度伪造检测。相关成果发表于 <strong>IEEE TNNLS、TIFS、T-BIOM、ACM TOMM、ACM MM、ICME</strong> 等重要期刊与会议。</p>
+              <p>面向现实世界的可信需求，持续推进数据泄露防护、隐私保护与多模态水印等前沿方向。</p>
+            </div>
           </div>
         </div>
       </section>
@@ -318,9 +307,9 @@
             <div><h2>国际竞赛荣誉</h2></div>
           </div>
           <div class="achievements">
-            <article class="achievement"><div class="year">2023</div><h3>数字人生成</h3><p>国际顶尖比赛三等奖</p></article>
-            <article class="achievement"><div class="year">2024</div><h3>声纹—人脸关联</h3><p>国际顶尖比赛二等奖</p></article>
-            <article class="achievement"><div class="year">2025</div><h3>ACM MM 情感识别竞赛</h3><p>全球第一</p></article>
+            <article class="achievement"><div class="year">2023</div><h3>数字人生成</h3><p>国际顶尖比赛全球第三</p></article>
+            <article class="achievement"><div class="year">2024</div><h3>声纹—人脸关联</h3><p>国际顶尖比赛全球第二</p></article>
+            <article class="achievement"><div class="year">2025</div><h3>情感识别与理解</h3><p>国际顶尖比赛全球第一与第二</p></article>
             <article class="achievement"><div class="year">2025</div><h3>Kaggle Drawing with LLMs</h3><p>全球银牌</p></article>
           </div>
         </div>
@@ -340,7 +329,7 @@
           </div>
           <aside class="join-card">
             <strong>如何联系</strong>
-            <p>请通过 GitHub 个人主页了解最新动态，并在联系时简要说明你的背景、感兴趣方向和已完成的项目或作品。</p>
+            <p>请通过 GitHub 个人主页了解最新动态，或发送邮件至 <a href="mailto:chenwuyangcn@gmail.com">chenwuyangcn@gmail.com</a>。联系时请简要说明你的背景、感兴趣方向和已完成的项目或作品。</p>
             <a class="button" href="https://github.com/audio-visual" target="_blank" rel="noreferrer">访问 GitHub 主页</a>
           </aside>
         </div>
