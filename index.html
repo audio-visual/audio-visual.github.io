@@ -103,6 +103,11 @@
       .paper em { color: #314967; font-style: normal; }
       .paper .author { color: var(--ink); font-weight: 800; }
       .paper .metric { color: var(--ink); font-weight: 800; }
+      .status-bilingual [lang="zh"] { display: none; }
+      .hero-lang-en { display: none; }
+      html[lang="en"] .hero-lang-zh { display: none; }
+      html[lang="en"] .hero-lang-en { display: inline; }
+      .lang-switch { border: 1px solid #b6c8dc; border-radius: 7px; background: white; color: var(--blue); padding: 7px 10px; font: inherit; font-size: .84rem; cursor: pointer; }
 
       .achievements { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
       .achievement { padding: 24px 22px; border-radius: 12px; background: #13273f; color: white; }
@@ -156,8 +161,8 @@
     <header class="topbar">
       <nav class="nav wrap" aria-label="主导航">
         <a class="brand" href="#home">Wuyang <span>Chen</span></a>
+        <button class="lang-switch" id="lang-switch" type="button">English | 中文</button>
         <div class="nav-links">
-          <a href="#research">研究方向</a>
           <a href="#publications">代表论文</a>
           <a href="#awards">竞赛荣誉</a>
           <a href="#join">加入团队</a>
@@ -170,8 +175,8 @@
         <div class="wrap hero-grid">
           <div>
             <div class="eyebrow">Human-centric Multimodal Intelligence</div>
-            <h1>让多模态智能<br />更<em>可信</em>、更安全、<br />更懂人。</h1>
-            <p class="lead">聚焦以人为中心的多模态学习、数字人生成与可信人工智能，探索语音、视觉、情感和隐私保护的交叉创新。</p>
+            <h1><span class="hero-lang-zh">让多模态智能<br />更<em>可信</em>、更安全、<br />更懂人。</span><span class="hero-lang-en">Making Multimodal AI<br />more <em>trustworthy</em>, safer,<br />and more human-centered.</span></h1>
+            <p class="lead"><span class="hero-lang-zh">聚焦以人为中心的多模态学习、数字人生成与可信人工智能，探索语音、视觉、情感和隐私保护的交叉创新。</span><span class="hero-lang-en">Researching human-centered multimodal learning, digital human generation, and trustworthy AI across audio, vision, affect, and privacy.</span></p>
             <div class="hero-actions">
               <a class="button primary" href="#join">面向学生的研究机会</a>
               <a class="button secondary" href="#publications">查看代表论文</a>
@@ -276,6 +281,8 @@
               <span class="paper-index">[10]</span>
               <p>Xu Kele, Yifan Wang, Ming Feng, Qisheng Xu, <span class="author">Wuyang Chen</span>, Yutao Dou, Cheng Yang, Huaimin Wang. <span class="paper-title">Silent Speech Interfaces in the Era of Large Language Models: A Comprehensive Taxonomy and Systematic Review.</span> <em>arXiv preprint</em> arXiv:2603.11877, 2026.</p>
             </article>
+            <article class="paper"><span class="paper-index">[11]</span><p>Qisheng Xu, Xiaoyi Tan, Wuyang Chen, Yutao Dou, Kele Xu. <span class="paper-title">Audio-Language Prompt Learning for Few-Shot Audio Classification.</span> <em>INTERSPEECH</em>, 2026.</p></article>
+            <article class="paper"><span class="paper-index">[12]</span><p>Yanjie Sun, <span class="author">Wuyang Chen</span>, Siwen Guo, Kele Xu*, Junhua Liu, Yong Dou. <span class="paper-title">A Systematic Survey for Audio Data Augmentation.</span> <em>ACM Computing Surveys</em>, 2026. <span class="status-bilingual"><span lang="en">Under minor revision</span><span lang="zh">小修中</span></span></p></article>
           </div>
         </div>
       </section>
@@ -342,5 +349,33 @@
         <a href="https://github.com/audio-visual" target="_blank" rel="noreferrer">github.com/audio-visual ↗</a>
       </div>
     </footer>
-  </body>
+<script>(()=>{const d={
+"研究方向":"Research","代表论文":"Selected Publications","竞赛荣誉":"Awards","加入团队":"Join Us",
+"面向学生开放的研究方向":"Research Opportunities for Students","论文发表":"Publications","国际竞赛荣誉":"Competition Awards",
+"其他涉猎":"Additional Topics","如何联系":"Get in touch","访问 GitHub 主页":"Visit GitHub",
+"让多模态智能":"Making Multimodal AI","更":"more ","可信":"trustworthy","、更安全、":", safer,","更可信、":"more trustworthy,","更安全、":"safer,","更懂人。":"and more human-centered.",
+"聚焦以人为中心的多模态学习、数字人生成与可信人工智能，探索语音、视觉、情感和隐私保护的交叉创新。":"Researching human-centered multimodal learning, digital human generation, and trustworthy AI across audio, vision, affect, and privacy.",
+"面向学生的研究机会":"Research Opportunities","查看代表论文":"Selected Publications","研究者简介":"Researcher profile",
+"欢迎对人工智能、计算机视觉、语音信号处理、信息安全或大模型感兴趣的本科生和研究生加入。":"Undergraduate and graduate students interested in AI, computer vision, speech processing, information security, or large language models are welcome.",
+"多模态表征学习与数字人":"Multimodal Representation Learning & Digital Humans","研究语音、人脸、情感理解等人类信号之间的关联建模，探索跨模态检索、语音驱动人脸生成，以及可控、高保真的数字人技术。":"Modeling relationships among speech, faces, and affect; exploring cross-modal retrieval, speech-driven face generation, and controllable, high-fidelity digital humans.",
+"深度伪造检测与内容可信":"Deepfake Detection & Content Trust","围绕多模态伪造识别、生成内容溯源与内容可信评估，构建面向真实应用场景的可靠智能系统。":"Building reliable systems for multimodal forgery detection, generative content provenance, and content trust.",
+"数据泄露防护、隐私与水印":"Data Leakage Prevention, Privacy & Watermarking","探索敏感数据流通中的泄露风险识别与防护，并推进隐私保护、多模态内容水印及模型与数据安全等方向。":"Detecting and preventing sensitive data leaks, while advancing privacy, multimodal watermarking, and model and data security.",
+"持续学习与可靠智能":"Continual Learning & Reliable AI","研究分布变化下的知识保持、增量适应与遗忘抑制，重点探索深度伪造等安全任务的持续检测。":"Studying knowledge retention, incremental adaptation, and forgetting under distribution shifts, especially continual detection for deepfakes and other security tasks.",
+"其他涉猎":"Additional Topics","医学多模态智能诊疗，以及静默语音（Silent Speech）、视觉到语音（Visual-to-Speech）等。":"Medical multimodal intelligence, silent speech, visual-to-speech, and related topics.",
+"论文主题横跨跨模态学习、生成模型、情感计算、可信检测与人机交互。":"Work spanning cross-modal learning, generative models, affective computing, trustworthy detection, and human-computer interaction.",
+"以具有解释力、鲁棒性和安全边界的人工智能系统为目标，将表征学习、生成模型和隐私增强技术贯通起来。":"Connecting representation learning, generative models, and privacy-enhancing techniques to build explainable, robust, and secure AI systems.",
+"研究工作覆盖语音—人脸关联与生成、多模态情感识别、复杂场景感知与深度伪造检测。相关成果发表于":"Research spans voice-face association and generation, multimodal emotion recognition, complex-scene perception, and deepfake detection. Publications appear in",
+"等重要期刊与会议。":" and leading conferences.",
+"面向现实世界的可信需求，持续推进数据泄露防护、隐私保护与多模态水印等前沿方向。":"Current directions include data leakage prevention, privacy protection, and multimodal watermarking for real-world trust.",
+"数字人生成":"Digital Human Generation","国际顶尖比赛全球第三":"3rd place worldwide","声纹—人脸关联":"Voice-Face Association","国际顶尖比赛全球第二":"2nd place worldwide",
+"情感识别与理解":"Emotion Recognition & Understanding","国际顶尖比赛全球第一与第二":"1st and 2nd places worldwide","全球银牌":"Global silver medal",
+"一起做有影响力、":"Join us to build AI that","也经得起检验的 AI。":"makes an impact and stands up to scrutiny.",
+"期待好奇、主动且乐于动手的同学。无论你更擅长算法、工程系统，还是对真实行业问题有敏锐观察，都可以从一个具体课题开始。":"We welcome curious, proactive students who enjoy building. Whether your strengths are algorithms, engineering, or spotting real-world problems, you can start with a focused project.",
+"多模态学习、语音 / 视觉、AIGC 与数字人":"Multimodal learning, audio / vision, AIGC, and digital humans",
+"深度伪造检测、内容可信、持续学习":"Deepfake detection, content trust, and continual learning",
+"数据安全、隐私保护与数字水印":"Data security, privacy protection, and digital watermarking",
+"如何联系":"Get in touch","自动化学报":"Acta Automatica Sinica","请通过 GitHub 个人主页了解最新动态，或发送邮件至":"For updates, visit the GitHub profile or email",
+"联系时请简要说明你的背景、感兴趣方向和已完成的项目或作品。":"Please briefly introduce your background, interests, and completed projects or work.",
+"© 2026 Wuyang Chen. Built for research and mentoring.":"© 2026 Wuyang Chen. Built for research and mentoring."
+};let lang="zh";delete d["更"];delete d["可信"];const ns=[];const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);while(w.nextNode())ns.push(w.currentNode);const orig=ns.map(n=>n.nodeValue);document.getElementById("lang-switch").onclick=()=>{lang=lang==="zh"?"en":"zh";ns.forEach((n,i)=>{let v=orig[i];if(lang==="en")for(const [a,b] of Object.entries(d).sort((x,y)=>y[0].length-x[0].length))v=v.replaceAll(a,b);n.nodeValue=v});document.documentElement.lang=lang==="en"?"en":"zh-CN";document.querySelector("nav").setAttribute("aria-label",lang==="en"?"Main navigation":"主导航");document.querySelector(".identity").setAttribute("aria-label",lang==="en"?"Researcher profile":"研究者简介");document.querySelectorAll(".status-bilingual [lang]").forEach(e=>e.style.display=e.lang===lang?"inline":"none")}})();</script>  </body>
 </html>
